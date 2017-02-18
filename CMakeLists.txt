@@ -32,6 +32,10 @@ target_link_libraries (uWS LINK_PUBLIC ${OPENSSL_SSL_LIBRARY})
 target_link_libraries (uWS LINK_PUBLIC ${OPENSSL_CRYPTO_LIBRARY})
 target_link_libraries (uWS LINK_PUBLIC ${ZLIB_LIBRARY})
 
+if (WIN32)
+target_link_libraries (uWS LINK_PUBLIC wsock32 ws2_32)
+endif (WIN32)
+
 if (UNIX)
 target_link_libraries (uWS LINK_PUBLIC pthread)
 install (TARGETS uWS DESTINATION /usr/lib64)
